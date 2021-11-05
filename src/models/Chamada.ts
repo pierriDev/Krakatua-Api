@@ -4,7 +4,12 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
+import AlunoChamada from "./AlunoChamada";
+import Treinos from "./Treinos";
 
 @Entity()
 export default class Chamada {
@@ -13,6 +18,16 @@ export default class Chamada {
 
   @Column()
   data: Date;
+
+  @ManyToOne(() => Treinos, (treinos) => treinos.id, {
+    nullable: false,
+    onDelete: "CASCADE",
+  })
+  @JoinColumn({ name: "treinos_id" })
+  treinos: Treinos;
+
+  @OneToMany(() => AlunoChamada, (alunochamada) => alunochamada.id)
+  alunochamada: AlunoChamada[];
 
   /*relacionar com treino*/
 

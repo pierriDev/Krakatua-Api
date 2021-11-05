@@ -4,7 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from "typeorm";
+import Administrador from "./Administrador";
+import Alunos from "./Alunos";
 
 @Entity()
 export default class Usuario {
@@ -25,6 +28,12 @@ export default class Usuario {
 
   @Column()
   cpf: string;
+
+  @OneToMany(() => Alunos, (alunos) => alunos.id)
+  alunos: Alunos[];
+
+  @OneToMany(() => Administrador, (administrador) => administrador.id)
+  administrador: Administrador[];
 
   @CreateDateColumn({
     type: "timestamp",

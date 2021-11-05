@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from "typeorm";
+import Time from "./Time";
 
 @Entity()
 export default class Campeonatos {
@@ -23,6 +24,9 @@ export default class Campeonatos {
 
   @Column()
   valor: number;
+
+  @OneToMany(() => Time, (time) => time.id)
+  time: Time[];
 
   @CreateDateColumn({
     type: "timestamp",

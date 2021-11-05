@@ -4,7 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from "typeorm";
+import AlunoTreino from "./AlunoTreino";
+import Chamada from "./Chamada";
 import Time from "./Time";
 
 @Entity()
@@ -20,6 +23,12 @@ export default class Treinos {
 
   @Column()
   hora_final: Time;
+
+  @OneToMany(() => AlunoTreino, (alunotreino) => alunotreino.id)
+  alunotreino: AlunoTreino[];
+
+  @OneToMany(() => Chamada, (chamada) => chamada.id)
+  chamada: Chamada[];
 
   @CreateDateColumn({
     type: "timestamp",
