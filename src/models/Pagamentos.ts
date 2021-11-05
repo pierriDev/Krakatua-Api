@@ -4,10 +4,13 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
+import Alunos from "./Alunos";
 
 @Entity()
-export default class Pagamentos {
+export default class Pagamento {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -25,6 +28,13 @@ export default class Pagamentos {
 
   @Column()
   data_pagamento: Date;
+
+  @ManyToOne(() => Alunos, (alunos) => alunos.id, {
+    nullable: false,
+    onDelete: "CASCADE",
+  })
+  @JoinColumn({ name: "alunos_id" })
+  alunos: Alunos;
 
   /*relacionar com aluno*/
 
