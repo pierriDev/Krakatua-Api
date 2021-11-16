@@ -1,16 +1,16 @@
 import repositories from "../repository/init";
-import AuthenticableControllers from "./authenticable-controllers";
+import MasterController from "./master-controllers";
 
-export default class AlunoController extends AuthenticableControllers {
+export default class AlunoController extends MasterController {
   constructor() {
     super(new repositories.AlunoRepository());
-    this.request_fields = [
-      "nome_completo",
-      "email",
-      "telefone",
-      "cpf",
-      "endereco",
-      "senha",
-    ];
+    /* this.request_fields = [
+       "nome_completo",
+       "email",
+       "telefone",
+       "cpf",
+       "endereco",
+       "senha",
+     ];*/
   }
 }
