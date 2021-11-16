@@ -2,20 +2,20 @@ import controllers from "../../controllers/init";
 import MasterRoutes from "../master-routes";
 
 /**
- * *  ADMIN ROUTES
- * * /admin
+ * *  ADMINISTRADOR ROUTES
+ * * /administrador
  */
 
-export default class AdminRoutes extends MasterRoutes {
+export default class AdministradorRoutes extends MasterRoutes {
   endpoint: string;
   constructor() {
     super(new controllers.AdmController());
-    this.endpoint = "/admin";
+    this.endpoint = "/administrador";
 
-    this.endpoints["login"] = {
+    /*this.endpoints["login"] = {
       login: {
         endpoint: this.router.post("/login", this.controller.login),
       },
-    };
+    };*/
   }
 }

@@ -8,17 +8,17 @@ import UploadRoutes from "../upload-routes";
  * * /aluno
  */
 
-export default class AlunoRoutes extends UploadRoutes {
+export default class AlunoRoutes extends MasterRoutes {
   endpoint: string;
   constructor() {
     super(new controllers.AlunoController());
 
     this.endpoint = "/aluno";
 
-    this.endpoints["login"] = {
-      login: {
-        endpoint: this.router.post("/login", this.controller.login),
-      },
-    };
+    /* this.endpoints["login"] = {
+       login: {
+         endpoint: this.router.post("/login", this.controller.login),
+       },
+     };*/
   }
 }
